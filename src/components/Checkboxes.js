@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Checkbox from "./Checkbox";
 import {
   StyledCheckWrapper,
@@ -8,9 +8,11 @@ import {
 const Checkboxes = (props) => {
   const { enabled, refresh, setEnabled, setRefresh } = props;
 
-  if (enabled === false) {
-    setRefresh(false);
-  }
+  useEffect(() => {
+    if (enabled === false) {
+      setRefresh(false);
+    }
+  }, [enabled, setRefresh]);
 
   return (
     <StyledCheckWrapper>
